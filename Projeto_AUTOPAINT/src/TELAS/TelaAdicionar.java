@@ -21,6 +21,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
+
 public class TelaAdicionar extends javax.swing.JFrame {
 
     /**
@@ -192,62 +193,58 @@ public class TelaAdicionar extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfAddTempoEstActionPerformed
 
     private void jbtAdicionarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAdicionarPedidoActionPerformed
+        String cliente = jtfAddNomeCliente.getText().trim();
+        String descricao = jtfAddDescricao.getText().trim();
+        String modeloCarro = jtfAddModeloVei.getText().trim();
+        String placa = jtfAddPlaca.getText().trim();
+        String textoValor = jtfAddValor.getText().replace("R$", "").replace(",", ".").trim();
+        String tempoEstimado = jtfAddTempoEst.getText().trim(); // Ex: "10 Horas", "3 Dias"
 
-        // 1. Captura dos textos dos campos (como Strings)
-        String cliente = jtfAddNomeCliente.getText();
-        String descricao = jtfAddDescricao.getText();
-        String modeloCarro = jtfAddModeloVei.getText();
-        String placa = jtfAddPlaca.getText();
-        String textoValor = jtfAddValor.getText();         // <-- Aqui está o valor em texto
-        String textoTempo = jtfAddTempoEst.getText();      // <-- Tempo estimado em texto
+        double valor;
 
-// 2. Validação de campos obrigatórios
-        if (cliente == null || cliente.trim().isEmpty()) {
+        // Validação de campos obrigatórios
+        if (cliente.isEmpty()) {
             new TelaErroAdd("O campo 'Cliente' não pode estar vazio.").setVisible(true);
             return;
         }
 
-        if (descricao == null || descricao.trim().isEmpty()) {
+        if (descricao.isEmpty()) {
             new TelaErroAdd("O campo 'Descrição' não pode estar vazio.").setVisible(true);
             return;
         }
 
-        if (modeloCarro == null || modeloCarro.trim().isEmpty()) {
+        if (modeloCarro.isEmpty()) {
             new TelaErroAdd("O campo 'Modelo do Carro' não pode estar vazio.").setVisible(true);
             return;
         }
 
-        if (placa == null || placa.trim().isEmpty()) {
+        if (placa.isEmpty()) {
             new TelaErroAdd("O campo 'Placa' não pode estar vazio.").setVisible(true);
             return;
         }
 
-        if (textoValor == null || textoValor.trim().isEmpty()) {
+        if (textoValor.isEmpty()) {
             new TelaErroAdd("O campo 'Valor' não pode estar vazio.").setVisible(true);
             return;
         }
 
-        if (textoTempo == null || textoTempo.trim().isEmpty()) {
+        if (tempoEstimado.isEmpty()) {
             new TelaErroAdd("O campo 'Tempo Estimado' não pode estar vazio.").setVisible(true);
             return;
         }
 
-// 3. Conversão segura
-        double valor;
-        int tempoEstimado;
-
+        // Conversão segura apenas do valor
         try {
             valor = Double.parseDouble(textoValor);
-            tempoEstimado = Integer.parseInt(textoTempo);
         } catch (NumberFormatException e) {
-            new TelaErroAdd("Valor ou tempo estimado inválido. Use apenas números.").setVisible(true);
+            new TelaErroAdd("Valor inválido. Use apenas números.").setVisible(true);
             return;
         }
 
-        // 2. Criação do objeto Cons_Servico
-        Cons_Servico pedido = new Cons_Servico(cliente, descricao, modeloCarro, String.valueOf(tempoEstimado), placa, valor);
+        // Criação do objeto Cons_Servico
+        Cons_Servico pedido = new Cons_Servico(cliente, descricao, modeloCarro, tempoEstimado, placa, valor);
 
-        // 3. Conexão e inserção no banco
+        // Envio para o banco
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/db_autopaint", "root", "")) {
             String sql = "INSERT INTO servicos (nome_cliente, descricao, modelo_carro, placa, valor, tempo_estimado) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -256,8 +253,10 @@ public class TelaAdicionar extends javax.swing.JFrame {
             stmt.setString(3, pedido.getModeloCarro());
             stmt.setString(4, pedido.getPlaca());
             stmt.setDouble(5, pedido.getValor());
-            stmt.setInt(6, Integer.parseInt(pedido.getTempoEstimado()));
+            stmt.setString(6, pedido.getTempoEstimado()); // já formatado
+
             stmt.executeUpdate();
+
             telaLista.carregarPedidos();
             this.dispose();
             TelaAddSucesso sucesso = new TelaAddSucesso("Pedido adicionado com sucesso!");
@@ -276,36 +275,36 @@ public class TelaAdicionar extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+    /* Set the Nimbus look and feel */
+    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+     */
+    try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            if ("Nimbus".equals(info.getName())) {
+                javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                break;
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaAdicionar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaAdicionar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaAdicionar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaAdicionar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaAdicionar().setVisible(true);
-            }
-        });
+    } catch (ClassNotFoundException ex) {
+        java.util.logging.Logger.getLogger(TelaAdicionar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (InstantiationException ex) {
+        java.util.logging.Logger.getLogger(TelaAdicionar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (IllegalAccessException ex) {
+        java.util.logging.Logger.getLogger(TelaAdicionar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        java.util.logging.Logger.getLogger(TelaAdicionar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
+    //</editor-fold>
+
+    /* Create and display the form */
+    java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+            new TelaAdicionar().setVisible(true);
+        }
+    });
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbtAdicionarPedido;

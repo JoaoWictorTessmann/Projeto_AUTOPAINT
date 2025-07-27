@@ -13,6 +13,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.NumberFormat;
+import java.util.Locale;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,7 +24,6 @@ import javax.swing.JOptionPane;
  *
  * @author Usuario
  */
-
 public class TelaModificar extends javax.swing.JFrame {
 
     public TelaModificar() {
@@ -276,14 +277,18 @@ public class TelaModificar extends javax.swing.JFrame {
                     String modelo = rs.getString("modelo_carro");
                     String placa = rs.getString("placa");
                     double valor = rs.getDouble("valor");
-                    int tempo = rs.getInt("tempo_estimado");
+                    String tempoEstimado = rs.getString("tempo_estimado"); // nome correto da coluna
+
+                    // 👇 Formata o valor como moeda brasileira
+                    NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+                    String valorFormatado = formatoMoeda.format(valor); // Ex: R$ 100,00
 
                     jtfModNomeCliente.setText(cliente);
                     jtfModDescricao.setText(descricao);
                     jtfModModeloVei.setText(modelo);
                     jtfModPlaca.setText(placa);
-                    jtfModValor.setText(String.valueOf(valor));
-                    jtfModTempoEst.setText(String.valueOf(tempo));
+                    jtfModValor.setText(valorFormatado);
+                    jtfModTempoEst.setText(String.valueOf(tempoEstimado));
 
                 } else {
                     new TelaErroAdd("ID não encontrado.").setVisible(true);
@@ -308,125 +313,120 @@ public class TelaModificar extends javax.swing.JFrame {
 
     private void jbtModificarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtModificarPedidoActionPerformed
         try {
-            int idSolicitado = Integer.parseInt(jtfModSolicitarID.getText());
+            int idSolicitado = Integer.parseInt(jtfModSolicitarID.getText().trim());
 
-            //  Captura dos dados como texto
-            String cliente = jtfModNomeCliente.getText();
-            String descricao = jtfModDescricao.getText();
-            String modelo = jtfModModeloVei.getText();
-            String placa = jtfModPlaca.getText();
-            String textoValor = jtfModValor.getText();
-            String textoTempo = jtfModTempoEst.getText();
+            // Captura dos dados como texto
+            String cliente = jtfModNomeCliente.getText().trim();
+            String descricao = jtfModDescricao.getText().trim();
+            String modelo = jtfModModeloVei.getText().trim();
+            String placa = jtfModPlaca.getText().trim();
+            String textoValor = jtfModValor.getText().trim();
+            String textoTempo = jtfModTempoEst.getText().trim();
 
-            //  Validação dos campos de texto
-            if (cliente == null || cliente.trim().isEmpty()) {
+            // Validação dos campos
+            if (cliente.isEmpty()) {
                 new TelaErroAdd("O campo 'Cliente' não pode estar vazio.").setVisible(true);
                 return;
             }
-            if (descricao == null || descricao.trim().isEmpty()) {
+            if (descricao.isEmpty()) {
                 new TelaErroAdd("O campo 'Descrição' não pode estar vazio.").setVisible(true);
                 return;
             }
-            if (modelo == null || modelo.trim().isEmpty()) {
+            if (modelo.isEmpty()) {
                 new TelaErroAdd("O campo 'Modelo do Carro' não pode estar vazio.").setVisible(true);
                 return;
             }
-            if (placa == null || placa.trim().isEmpty()) {
+            if (placa.isEmpty()) {
                 new TelaErroAdd("O campo 'Placa' não pode estar vazio.").setVisible(true);
                 return;
             }
-            if (textoValor == null || textoValor.trim().isEmpty()) {
+            if (textoValor.isEmpty()) {
                 new TelaErroAdd("O campo 'Valor' não pode estar vazio.").setVisible(true);
                 return;
             }
-            if (textoTempo == null || textoTempo.trim().isEmpty()) {
+            if (textoTempo.isEmpty()) {
                 new TelaErroAdd("O campo 'Tempo Estimado' não pode estar vazio.").setVisible(true);
                 return;
             }
 
-            // Conversão segura
+            // Conversão segura do valor
             double valor;
-            int tempo;
-
             try {
-                valor = Double.parseDouble(textoValor);
-                tempo = Integer.parseInt(textoTempo);
+                String valorLimpo = textoValor.replace("R$", "").replace(".", "").replace(",", ".").trim();
+                valor = Double.parseDouble(valorLimpo);
             } catch (NumberFormatException e) {
-                new TelaErroAdd("Valor ou tempo estimado inválido. Use apenas números.").setVisible(true);
+                new TelaErroAdd("Valor inválido. Use o formato R$ 100,00.").setVisible(true);
                 return;
             }
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_autopaint", "root", "")) {
-            String sql = "UPDATE servicos SET nome_cliente = ?, descricao = ?, modelo_carro = ?, placa = ?, valor = ?, tempo_estimado = ? WHERE id_servico = ?";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, cliente);
-            stmt.setString(2, descricao);
-            stmt.setString(3, modelo);
-            stmt.setString(4, placa);
-            stmt.setDouble(5, valor);
-            stmt.setInt(6, tempo);
-            stmt.setInt(7, idSolicitado);
+            // Tempo agora é texto livre
+            String tempo = textoTempo;
 
-            int linhasAfetadas = stmt.executeUpdate();
+            // Atualização no banco
+            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_autopaint", "root", "")) {
+                String sql = "UPDATE servicos SET nome_cliente = ?, descricao = ?, modelo_carro = ?, placa = ?, valor = ?, tempo_estimado = ? WHERE id_servico = ?";
+                PreparedStatement stmt = conn.prepareStatement(sql);
+                stmt.setString(1, cliente);
+                stmt.setString(2, descricao);
+                stmt.setString(3, modelo);
+                stmt.setString(4, placa);
+                stmt.setDouble(5, valor);
+                stmt.setString(6, tempo); //  agora como texto
+                stmt.setInt(7, idSolicitado);
 
-            if (linhasAfetadas > 0) {
-                new TelaAddSucesso("Pedido Modificado Com Sucesso!").setVisible(true);
-                telaLista.carregarPedidos();
-                this.dispose();
-            } else {
-                new TelaErroAdd("Nenhum pedido foi modificado. Verifique o ID.").setVisible(true);
+                int linhasAfetadas = stmt.executeUpdate();
+
+                if (linhasAfetadas > 0) {
+                    new TelaAddSucesso("Pedido Modificado Com Sucesso!").setVisible(true);
+                    telaLista.carregarPedidos();
+                    this.dispose();
+                } else {
+                    new TelaErroAdd("Nenhum pedido foi modificado. Verifique o ID.").setVisible(true);
+                }
             }
+
+        } catch (NumberFormatException e) {
+            new TelaErroAdd("ID inválido.").setVisible(true);
+        } catch (SQLException e) {
+            new TelaErroAdd("Erro ao modificar pedido: " + e.getMessage()).setVisible(true);
         }
 
-    }
-    catch (NumberFormatException e
-
-    
-        ) {
-            new TelaErroAdd("ID, valor ou tempo inválido.").setVisible(true);
-    }
-    catch (SQLException e
-
-    
-        ) {
-        new TelaErroAdd("Erro ao modificar pedido: " + e.getMessage()).setVisible(true);
-    }
     }//GEN-LAST:event_jbtModificarPedidoActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-    /* Set the Nimbus look and feel */
-    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-     */
-    try {
-        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-            if ("Nimbus".equals(info.getName())) {
-                javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                break;
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
             }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(TelaModificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(TelaModificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(TelaModificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(TelaModificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-    } catch (ClassNotFoundException ex) {
-        java.util.logging.Logger.getLogger(TelaModificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (InstantiationException ex) {
-        java.util.logging.Logger.getLogger(TelaModificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (IllegalAccessException ex) {
-        java.util.logging.Logger.getLogger(TelaModificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-        java.util.logging.Logger.getLogger(TelaModificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    }
-    //</editor-fold>
+        //</editor-fold>
 
-    /* Create and display the form */
-    java.awt.EventQueue.invokeLater(new Runnable() {
-        public void run() {
-            new TelaModificar().setVisible(true);
-        }
-    });
-}
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new TelaModificar().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbtModConfirmarID;

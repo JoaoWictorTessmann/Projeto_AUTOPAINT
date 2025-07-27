@@ -15,6 +15,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.NumberFormat;
+import java.util.Locale;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -279,15 +281,13 @@ public class TelaLista extends javax.swing.JFrame {
     }
 
     public void carregarPedidos() {
-        // Modelo personalizado que impede edição
         DefaultTableModel model = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false; // todas as células não editáveis
+                return false;
             }
         };
 
-        // Define os nomes das colunas
         model.setColumnIdentifiers(new Object[]{
             "ID", "Cliente", "Descrição", "Modelo", "Placa", "Valor", "Tempo", "Status"
         });
@@ -297,15 +297,21 @@ public class TelaLista extends javax.swing.JFrame {
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
 
+            // Formato de moeda brasileira
+            NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+
             while (rs.next()) {
+                double valor = rs.getDouble("valor");
+                String valorFormatado = formatoMoeda.format(valor); // Ex: R$ 100,00
+
                 model.addRow(new Object[]{
                     rs.getInt("id_servico"),
                     rs.getString("nome_cliente"),
                     rs.getString("descricao"),
                     rs.getString("modelo_carro"),
                     rs.getString("placa"),
-                    rs.getDouble("valor"),
-                    rs.getInt("tempo_estimado"),
+                    valorFormatado, // 👈 valor formatado como moeda
+                    rs.getString("tempo_estimado"),
                     rs.getString("status_servico")
                 });
             }
@@ -325,7 +331,6 @@ public class TelaLista extends javax.swing.JFrame {
         JtlLista.getTableHeader().setForeground(Color.BLACK);
         JtlLista.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 16));
         JtlLista.getTableHeader().setOpaque(true);
-
 
 // Alternância de cor nas linhas (zebra)
         JtlLista.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
