@@ -47,13 +47,13 @@ public class TelaFinalizar extends javax.swing.JFrame {
         jtfIdPedidoFim.setBackground(new Color(0, 0, 0, 0)); // Totalmente transparente
         jtfIdPedidoFim.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 22));
 
-        jbtFinalizarServico.setContentAreaFilled(false); // tira o fundo branco
+        jbtFinalizarServico.setContentAreaFilled(true); // tira o fundo branco
         jbtFinalizarServico.setBorderPainted(false);     // tira a borda
-        jbtFinalizarServico.setForeground(java.awt.Color.BLACK);
         jbtFinalizarServico.setOpaque(false);            // permite transparência
         jbtFinalizarServico.setFont(new Font("SansSerif", Font.BOLD, 20)); // ou outro tamanho
-        jbtFinalizarServico.setForeground(new Color(255, 255, 255)); // cor branca ou como a cor do fundo
-
+        jbtFinalizarServico.setForeground(java.awt.Color.WHITE); // cor branca ou como a cor do fundo
+        jbtFinalizarServico.setBackground(new Color(20, 40, 60)); // Azul escuro (RGB)
+        
         ImageIcon imagemOriginal = DAO.ImagemTelas.getImagem("telafinalizar");
 
         if (imagemOriginal != null) {
@@ -102,18 +102,18 @@ public class TelaFinalizar extends javax.swing.JFrame {
                         .addGap(128, 128, 128)
                         .addComponent(jtfIdPedidoFim, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(117, 117, 117)
-                        .addComponent(jbtFinalizarServico, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(171, Short.MAX_VALUE))
+                        .addGap(110, 110, 110)
+                        .addComponent(jbtFinalizarServico, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(164, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(288, Short.MAX_VALUE)
                 .addComponent(jtfIdPedidoFim, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
-                .addComponent(jbtFinalizarServico, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(95, 95, 95))
+                .addGap(45, 45, 45)
+                .addComponent(jbtFinalizarServico, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85))
         );
 
         pack();

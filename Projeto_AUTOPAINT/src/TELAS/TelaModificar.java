@@ -50,12 +50,12 @@ public class TelaModificar extends javax.swing.JFrame {
         jtfModSolicitarID.setBackground(new Color(0, 0, 0, 0)); // Totalmente transparente
         jtfModSolicitarID.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 18));
 
-        jbtModConfirmarID.setContentAreaFilled(false); // tira o fundo branco
+        jbtModConfirmarID.setContentAreaFilled(true); // tira o fundo branco
         jbtModConfirmarID.setBorderPainted(false);     // tira a borda
         jbtModConfirmarID.setForeground(java.awt.Color.WHITE);
         jbtModConfirmarID.setOpaque(false);            // permite transparência
         jbtModConfirmarID.setFont(new Font("SansSerif", Font.BOLD, 20)); // ou outro tamanho
-        jbtModConfirmarID.setForeground(new Color(255, 255, 255)); // cor branca ou como a cor do fundo
+        jbtModConfirmarID.setBackground(new Color(10, 20, 40));
 
         jtfModNomeCliente.setOpaque(false);
         jtfModNomeCliente.setBorder(javax.swing.BorderFactory.createEmptyBorder());
@@ -93,12 +93,12 @@ public class TelaModificar extends javax.swing.JFrame {
         jtfModTempoEst.setBackground(new Color(0, 0, 0, 0)); // Totalmente transparente
         jtfModTempoEst.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 18));
 
-        jbtModificarPedido.setContentAreaFilled(false); // tira o fundo branco
+        jbtModificarPedido.setContentAreaFilled(true); // tira o fundo branco
         jbtModificarPedido.setBorderPainted(false);     // tira a borda
-        jbtModificarPedido.setForeground(java.awt.Color.BLACK);
         jbtModificarPedido.setOpaque(false);            // permite transparência
+        jbtModificarPedido.setForeground(java.awt.Color.WHITE);
         jbtModificarPedido.setFont(new Font("SansSerif", Font.BOLD, 30)); // ou outro tamanho
-        jbtModificarPedido.setForeground(new Color(255, 255, 255)); // cor branca ou como a cor do fundo
+        jbtModificarPedido.setBackground(new Color(10, 20, 40));
 
         ImageIcon imagemOriginal = DAO.ImagemTelas.getImagem("telamodificar");
 
@@ -190,36 +190,38 @@ public class TelaModificar extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbtModificarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(81, 81, 81)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jtfModValor)
                                 .addGap(29, 29, 29)
                                 .addComponent(jtfModTempoEst, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(9, 9, 9))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jtfModModeloVei, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                                     .addComponent(jtfModSolicitarID)
                                     .addComponent(jtfModNomeCliente))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jtfModDescricao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
-                                        .addComponent(jtfModPlaca))
-                                    .addComponent(jbtModConfirmarID, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(73, Short.MAX_VALUE)
-                        .addComponent(jbtModificarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(203, 203, 203))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jbtModConfirmarID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jtfModDescricao, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jtfModPlaca))
+                                        .addGap(9, 9, 9)))))))
+                .addGap(183, 183, 183))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(133, 133, 133)
+                .addGap(129, 129, 129)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfModSolicitarID, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtModConfirmarID, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbtModConfirmarID, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(101, 101, 101)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfModNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -233,8 +235,8 @@ public class TelaModificar extends javax.swing.JFrame {
                     .addComponent(jtfModTempoEst, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
                     .addComponent(jtfModValor))
                 .addGap(18, 18, 18)
-                .addComponent(jbtModificarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addComponent(jbtModificarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(154, Short.MAX_VALUE))
         );
 
         pack();

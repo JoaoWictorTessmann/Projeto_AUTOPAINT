@@ -43,13 +43,13 @@ public class TelaLogin extends javax.swing.JFrame {
         jpfPassword.setBackground(new Color(0, 0, 0, 0)); // Totalmente transparente
         jpfPassword.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 18));
 
-        jbtLogIn.setContentAreaFilled(false); // tira o fundo branco
+        jbtLogIn.setContentAreaFilled(true); // tira o fundo branco
         jbtLogIn.setBorderPainted(false);     // tira a borda
-        jbtLogIn.setForeground(java.awt.Color.BLACK);
         jbtLogIn.setOpaque(false);            // permite transparência
         jbtLogIn.setFont(new Font("SansSerif", Font.BOLD, 40)); // ou outro tamanho
-        jbtLogIn.setForeground(new Color(255, 255, 255)); // cor branca ou como a cor do fundo
-
+        jbtLogIn.setForeground(java.awt.Color.WHITE); // cor branca ou como a cor do fundo
+        jbtLogIn.setBackground(new Color(20, 40, 60));
+        
         ImageIcon imagemOriginal = DAO.ImagemTelas.getImagem("telalogin");
 
         if (imagemOriginal != null) {
@@ -105,17 +105,14 @@ public class TelaLogin extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(68, Short.MAX_VALUE)
-                        .addComponent(jbtLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtfUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
-                            .addComponent(jpfPassword))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(69, 69, 69))
+                .addGap(134, 134, 134)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jtfUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                    .addComponent(jpfPassword))
+                .addContainerGap(15, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jbtLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,8 +122,8 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jpfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jbtLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66))
+                .addComponent(jbtLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58))
         );
 
         pack();
@@ -162,8 +159,12 @@ public class TelaLogin extends javax.swing.JFrame {
                 this.dispose();
 
             } else {
-                TelaAvisoUsu aviso = new TelaAvisoUsu();
-                aviso.setVisible(true);
+                TelaLista listas = new TelaLista();
+                listas.carregarPedidos();
+                listas.setVisible(true);
+                
+                /*TelaAvisoUsu aviso = new TelaAvisoUsu();
+                aviso.setVisible(true);*/
                 
             }
 

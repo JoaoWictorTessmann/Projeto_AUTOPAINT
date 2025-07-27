@@ -27,12 +27,11 @@ public class TelaAvisoUsu extends javax.swing.JFrame {
         setLayout(null); // necessário para posicionamento manual
         setResizable(false);
         
-        jbtOkAviso.setContentAreaFilled(false); // tira o fundo branco
+        jbtOkAviso.setContentAreaFilled(true); // tira o fundo branco
         jbtOkAviso.setBorderPainted(false);     // tira a borda
-        jbtOkAviso.setForeground(java.awt.Color.BLACK);
         jbtOkAviso.setOpaque(false);            // permite transparência
         jbtOkAviso.setFont(new Font("SansSerif", Font.BOLD, 25)); // ou outro tamanho
-        jbtOkAviso.setForeground(new Color(255, 255, 255)); // cor branca ou como a cor do fundo
+        jbtOkAviso.setForeground(Color.BLACK);
         
         ImageIcon imagemOriginal = DAO.ImagemTelas.getImagem("telaaviso");
 
@@ -75,16 +74,16 @@ public class TelaAvisoUsu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(109, Short.MAX_VALUE)
-                .addComponent(jbtOkAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(107, Short.MAX_VALUE)
+                .addComponent(jbtOkAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(114, 114, 114))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(202, Short.MAX_VALUE)
-                .addComponent(jbtOkAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addComponent(jbtOkAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();

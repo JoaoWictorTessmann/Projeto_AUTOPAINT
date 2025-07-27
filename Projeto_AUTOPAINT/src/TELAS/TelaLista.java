@@ -37,40 +37,40 @@ public class TelaLista extends javax.swing.JFrame {
         setLayout(null); // necessário para posicionamento manual
         setResizable(false);
 
-        jbtAdicionar.setContentAreaFilled(false); // tira o fundo branco
+        jbtAdicionar.setContentAreaFilled(true); // tira o fundo branco
         jbtAdicionar.setBorderPainted(false);     // tira a borda
-        jbtAdicionar.setForeground(java.awt.Color.BLACK);
+        jbtAdicionar.setForeground(java.awt.Color.WHITE);
         jbtAdicionar.setOpaque(false);            // permite transparência
         jbtAdicionar.setFont(new Font("SansSerif", Font.BOLD, 40)); // ou outro tamanho
-        jbtAdicionar.setForeground(new Color(255, 255, 255)); // cor branca ou como a cor do fundo
+        jbtAdicionar.setBackground(new Color(20, 40, 60)); // cor branca ou como a cor do fundo
 
-        jbtModificar.setContentAreaFilled(false); // tira o fundo branco
+        jbtModificar.setContentAreaFilled(true); // tira o fundo branco
         jbtModificar.setBorderPainted(false);     // tira a borda
-        jbtModificar.setForeground(java.awt.Color.BLACK);
+        jbtModificar.setForeground(java.awt.Color.WHITE);
         jbtModificar.setOpaque(false);            // permite transparência
         jbtModificar.setFont(new Font("SansSerif", Font.BOLD, 40)); // ou outro tamanho
-        jbtModificar.setForeground(new Color(255, 255, 255)); // cor branca ou como a cor do fundo
+        jbtModificar.setBackground(new Color(20, 40, 60)); // cor branca ou como a cor do fundo
 
-        jbtCancelar.setContentAreaFilled(false); // tira o fundo branco
+        jbtCancelar.setContentAreaFilled(true); // tira o fundo branco
         jbtCancelar.setBorderPainted(false);     // tira a borda
-        jbtCancelar.setForeground(java.awt.Color.BLACK);
+        jbtCancelar.setForeground(java.awt.Color.WHITE);
         jbtCancelar.setOpaque(false);            // permite transparência
         jbtCancelar.setFont(new Font("SansSerif", Font.BOLD, 40)); // ou outro tamanho
-        jbtCancelar.setForeground(new Color(255, 255, 255)); // cor branca ou como a cor do fundo
+        jbtCancelar.setBackground(new Color(20, 40, 60)); // cor branca ou como a cor do fundo
 
-        jbtFinalizar.setContentAreaFilled(false); // tira o fundo branco
+        jbtFinalizar.setContentAreaFilled(true); // tira o fundo branco
         jbtFinalizar.setBorderPainted(false);     // tira a borda
-        jbtFinalizar.setForeground(java.awt.Color.BLACK);
+        jbtFinalizar.setForeground(java.awt.Color.WHITE);
         jbtFinalizar.setOpaque(false);            // permite transparência
         jbtFinalizar.setFont(new Font("SansSerif", Font.BOLD, 40)); // ou outro tamanho
-        jbtFinalizar.setForeground(new Color(255, 255, 255)); // cor branca ou como a cor do fundo
+        jbtFinalizar.setBackground(new Color(20, 40, 60)); // cor branca ou como a cor do fundo
 
-        jbtSair.setContentAreaFilled(false); // tira o fundo branco
+        jbtSair.setContentAreaFilled(true); // tira o fundo branco
         jbtSair.setBorderPainted(false);     // tira a borda
-        jbtSair.setForeground(java.awt.Color.BLACK);
+        jbtSair.setForeground(java.awt.Color.WHITE);
         jbtSair.setOpaque(false);            // permite transparência
         jbtSair.setFont(new Font("SansSerif", Font.BOLD, 40)); // ou outro tamanho
-        jbtSair.setForeground(new Color(255, 255, 255)); // cor branca ou como a cor do fundo
+        jbtSair.setBackground(new Color(20, 40, 60)); // cor branca ou como a cor do fundo
 
         ImageIcon imagemOriginal = DAO.ImagemTelas.getImagem("telalista");
 
@@ -185,16 +185,16 @@ public class TelaLista extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addComponent(jbtSair, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(135, 135, 135)
-                        .addComponent(jbtAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(jbtModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(jbtCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(jbtFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(105, 105, 105)
+                        .addComponent(jbtSair, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(128, 128, 128)
+                        .addComponent(jbtAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbtModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbtCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbtFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1403, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -203,16 +203,16 @@ public class TelaLista extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(255, Short.MAX_VALUE)
+                .addContainerGap(252, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbtCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtSair, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(138, 138, 138))
+                    .addComponent(jbtCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtSair, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(133, 133, 133))
         );
 
         pack();

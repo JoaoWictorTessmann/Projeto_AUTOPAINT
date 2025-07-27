@@ -48,12 +48,12 @@ public class TelaCancelar extends javax.swing.JFrame {
         jtfIdPedidoCancel.setBackground(new Color(0, 0, 0, 0)); // Totalmente transparente
         jtfIdPedidoCancel.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 22));
 
-        jbtConfirmarCancelamento.setContentAreaFilled(false); // tira o fundo branco
+        jbtConfirmarCancelamento.setContentAreaFilled(true); // tira o fundo branco
         jbtConfirmarCancelamento.setBorderPainted(false);     // tira a borda
-        jbtConfirmarCancelamento.setForeground(java.awt.Color.BLACK);
         jbtConfirmarCancelamento.setOpaque(false);            // permite transparência
         jbtConfirmarCancelamento.setFont(new Font("SansSerif", Font.BOLD, 20)); // ou outro tamanho
-        jbtConfirmarCancelamento.setForeground(new Color(255, 255, 255)); // cor branca ou como a cor do fundo
+        jbtConfirmarCancelamento.setForeground(java.awt.Color.WHITE); // cor branca ou como a cor do fundo
+        jbtConfirmarCancelamento.setBackground(new Color(20, 40, 60)); // Azul escuro (RGB)
 
         ImageIcon imagemOriginal = DAO.ImagemTelas.getImagem("telacancelar");
 
@@ -103,22 +103,22 @@ public class TelaCancelar extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(100, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jbtConfirmarCancelamento, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jtfIdPedidoCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE)
+                .addComponent(jtfIdPedidoCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(114, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(86, 86, 86)
+                .addComponent(jbtConfirmarCancelamento, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(261, Short.MAX_VALUE)
                 .addComponent(jtfIdPedidoCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74)
-                .addComponent(jbtConfirmarCancelamento, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addGap(66, 66, 66)
+                .addComponent(jbtConfirmarCancelamento, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();

@@ -35,11 +35,12 @@ public class TelaErroAdd extends javax.swing.JFrame {
         jlbTextoErro.setForeground(Color.WHITE);
 
         // Botão OK estilizado
-        jbtErroOk.setContentAreaFilled(false);
+        jbtErroOk.setContentAreaFilled(true);
         jbtErroOk.setBorderPainted(false);
         jbtErroOk.setOpaque(false);
         jbtErroOk.setFont(new Font("SansSerif", Font.BOLD, 25));
-        jbtErroOk.setForeground(new Color(255, 255, 255));
+        jbtErroOk.setForeground(Color.WHITE);
+        jbtErroOk.setBackground(new Color(10, 20, 40));
 
         // Fundo com imagem personalizada
         ImageIcon imagemOriginal = DAO.ImagemTelas.getImagem("telaerroadd");
@@ -85,8 +86,8 @@ public class TelaErroAdd extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(158, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlbTextoErro, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtErroOk, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbtErroOk, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlbTextoErro, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
@@ -94,8 +95,8 @@ public class TelaErroAdd extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(68, 68, 68)
                 .addComponent(jlbTextoErro, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(jbtErroOk, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(jbtErroOk, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
 

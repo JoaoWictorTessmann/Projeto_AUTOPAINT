@@ -36,12 +36,12 @@ public class TelaAddSucesso extends javax.swing.JFrame {
         jlbTextoAddSucesso.setFont(new Font("SansSerif", Font.BOLD, 15));
         jlbTextoAddSucesso.setForeground(Color.WHITE);
         
-        jbtOkAddSucesso.setContentAreaFilled(false); // tira o fundo branco
+        jbtOkAddSucesso.setContentAreaFilled(true); // tira o fundo branco
         jbtOkAddSucesso.setBorderPainted(false);     // tira a borda
-        jbtOkAddSucesso.setForeground(java.awt.Color.BLACK);
         jbtOkAddSucesso.setOpaque(false);            // permite transparência
         jbtOkAddSucesso.setFont(new Font("SansSerif", Font.BOLD, 25)); // ou outro tamanho
-        jbtOkAddSucesso.setForeground(new Color(255, 255, 255)); // cor branca ou como a cor do fundo
+        jbtOkAddSucesso.setForeground(new Color(0, 50, 100)); // cor branca ou como a cor do fundo
+        jbtOkAddSucesso.setBorder(new javax.swing.border.LineBorder(new Color(0, 120, 215), 2, true));
         
         ImageIcon imagemOriginal = DAO.ImagemTelas.getImagem("telaaddsucesso");
 
@@ -84,12 +84,15 @@ public class TelaAddSucesso extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(158, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(147, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlbTextoAddSucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtOkAddSucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(76, 76, 76))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jlbTextoAddSucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(76, 76, 76))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jbtOkAddSucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(106, 106, 106))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,8 +100,8 @@ public class TelaAddSucesso extends javax.swing.JFrame {
                 .addContainerGap(70, Short.MAX_VALUE)
                 .addComponent(jlbTextoAddSucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jbtOkAddSucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61))
+                .addComponent(jbtOkAddSucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
         );
 
         pack();

@@ -77,12 +77,12 @@ public class TelaAdicionar extends javax.swing.JFrame {
         jtfAddTempoEst.setBackground(new Color(0, 0, 0, 0)); // Totalmente transparente
         jtfAddTempoEst.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
 
-        jbtAdicionarPedido.setContentAreaFilled(false); // tira o fundo branco
+        jbtAdicionarPedido.setBackground(new Color(20, 40, 60)); // Azul escuro (RGB)
+        jbtAdicionarPedido.setContentAreaFilled(true); // tira o fundo branco
         jbtAdicionarPedido.setBorderPainted(false);     // tira a borda
-        jbtAdicionarPedido.setForeground(java.awt.Color.BLACK);
+        jbtAdicionarPedido.setForeground(java.awt.Color.WHITE);
         jbtAdicionarPedido.setOpaque(false);            // permite transparência
         jbtAdicionarPedido.setFont(new Font("SansSerif", Font.BOLD, 25)); // ou outro tamanho
-        jbtAdicionarPedido.setForeground(new Color(255, 255, 255)); // cor branca ou como a cor do fundo
 
         ImageIcon imagemOriginal = DAO.ImagemTelas.getImagem("telaadicionar");
 
@@ -180,9 +180,9 @@ public class TelaAdicionar extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfAddValor, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfAddTempoEst, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jbtAdicionarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jbtAdicionarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         pack();
