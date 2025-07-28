@@ -1,5 +1,5 @@
 package DAO;
-
+// Criação da "GetImagem" para localizar as imagens que seram usadas durante as telas.
 import javax.swing.ImageIcon;
 
 public class ImagemTelas {

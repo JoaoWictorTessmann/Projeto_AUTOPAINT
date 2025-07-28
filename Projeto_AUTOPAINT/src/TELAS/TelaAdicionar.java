@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package TELAS;
 
+// Importações necessárias para componentes visuais e banco de dados
 import DAO.Cons_Servico;
 import TELAS.TelaLista;
 import java.awt.Color;
@@ -21,91 +18,91 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
-
 public class TelaAdicionar extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaAdicionar
-     */
+    // Construtor padrão (não utilizado diretamente neste contexto)
     public TelaAdicionar() {
         initComponents();
     }
-    private TelaLista telaLista; // referência da tela principal
 
+    // Referência à tela principal para comunicação entre janelas
+    private TelaLista telaLista;
+
+    // Construtor principal que recebe a tela principal como parâmetro
     public TelaAdicionar(TelaLista telaLista) {
-        initComponents();
-        this.telaLista = telaLista;
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(500, 550); // ou setExtendedState(MAXIMIZED_BOTH);
-        setLocationRelativeTo(null);//Centralizar na tela
-        setLayout(null); // necessário para posicionamento manual
-        setResizable(false);
+        initComponents(); // Inicializa os componentes visuais
+        this.telaLista = telaLista; // Armazena referência da tela principal
 
+        // Configurações da janela
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Fecha apenas esta janela
+        setSize(500, 550); // Define tamanho fixo da tela
+        setLocationRelativeTo(null); // Centraliza na tela
+        setLayout(null); // Permite posicionamento manual dos componentes
+        setResizable(false); // Impede redimensionamento da janela
+
+        // Estilização dos campos de texto (transparência, fonte, cor)
         jtfAddNomeCliente.setOpaque(false);
         jtfAddNomeCliente.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-        jtfAddNomeCliente.setForeground(java.awt.Color.BLACK);
-        jtfAddNomeCliente.setBackground(new Color(0, 0, 0, 0)); // Totalmente transparente
-        jtfAddNomeCliente.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
+        jtfAddNomeCliente.setForeground(Color.BLACK);
+        jtfAddNomeCliente.setBackground(new Color(0, 0, 0, 0)); // Fundo totalmente transparente
+        jtfAddNomeCliente.setFont(new Font("SansSerif", Font.BOLD, 14));
 
         jtfAddDescricao.setOpaque(false);
         jtfAddDescricao.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-        jtfAddDescricao.setForeground(java.awt.Color.BLACK);
-        jtfAddDescricao.setBackground(new Color(0, 0, 0, 0)); // Totalmente transparente
-        jtfAddDescricao.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
+        jtfAddDescricao.setForeground(Color.BLACK);
+        jtfAddDescricao.setBackground(new Color(0, 0, 0, 0));
+        jtfAddDescricao.setFont(new Font("SansSerif", Font.BOLD, 14));
 
         jtfAddModeloVei.setOpaque(false);
         jtfAddModeloVei.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-        jtfAddModeloVei.setForeground(java.awt.Color.BLACK);
-        jtfAddModeloVei.setBackground(new Color(0, 0, 0, 0)); // Totalmente transparente
-        jtfAddModeloVei.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
+        jtfAddModeloVei.setForeground(Color.BLACK);
+        jtfAddModeloVei.setBackground(new Color(0, 0, 0, 0));
+        jtfAddModeloVei.setFont(new Font("SansSerif", Font.BOLD, 14));
 
         jtfAddPlaca.setOpaque(false);
         jtfAddPlaca.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-        jtfAddPlaca.setForeground(java.awt.Color.BLACK);
-        jtfAddPlaca.setBackground(new Color(0, 0, 0, 0)); // Totalmente transparente
-        jtfAddPlaca.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
+        jtfAddPlaca.setForeground(Color.BLACK);
+        jtfAddPlaca.setBackground(new Color(0, 0, 0, 0));
+        jtfAddPlaca.setFont(new Font("SansSerif", Font.BOLD, 14));
 
         jtfAddValor.setOpaque(false);
         jtfAddValor.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-        jtfAddValor.setForeground(java.awt.Color.BLACK);
-        jtfAddValor.setBackground(new Color(0, 0, 0, 0)); // Totalmente transparente
-        jtfAddValor.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
+        jtfAddValor.setForeground(Color.BLACK);
+        jtfAddValor.setBackground(new Color(0, 0, 0, 0));
+        jtfAddValor.setFont(new Font("SansSerif", Font.BOLD, 14));
 
         jtfAddTempoEst.setOpaque(false);
         jtfAddTempoEst.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-        jtfAddTempoEst.setForeground(java.awt.Color.BLACK);
-        jtfAddTempoEst.setBackground(new Color(0, 0, 0, 0)); // Totalmente transparente
-        jtfAddTempoEst.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
+        jtfAddTempoEst.setForeground(Color.BLACK);
+        jtfAddTempoEst.setBackground(new Color(0, 0, 0, 0));
+        jtfAddTempoEst.setFont(new Font("SansSerif", Font.BOLD, 14));
 
-        jbtAdicionarPedido.setBackground(new Color(20, 40, 60)); // Azul escuro (RGB)
-        jbtAdicionarPedido.setContentAreaFilled(true); // tira o fundo branco
-        jbtAdicionarPedido.setBorderPainted(false);     // tira a borda
-        jbtAdicionarPedido.setForeground(java.awt.Color.WHITE);
-        jbtAdicionarPedido.setOpaque(false);            // permite transparência
-        jbtAdicionarPedido.setFont(new Font("SansSerif", Font.BOLD, 25)); // ou outro tamanho
+        // Estilização do botão de adicionar pedido
+        jbtAdicionarPedido.setBackground(new Color(20, 40, 60)); // Azul escuro
+        jbtAdicionarPedido.setContentAreaFilled(true); // Ativa fundo do botão
+        jbtAdicionarPedido.setBorderPainted(false); // Remove borda padrão
+        jbtAdicionarPedido.setForeground(Color.WHITE); // Texto branco
+        jbtAdicionarPedido.setOpaque(false); // Permite transparência
+        jbtAdicionarPedido.setFont(new Font("SansSerif", Font.BOLD, 25)); // Fonte grande e em negrito
 
+        // Carrega imagem de fundo da tela
         ImageIcon imagemOriginal = DAO.ImagemTelas.getImagem("telaadicionar");
 
         if (imagemOriginal != null) {
-            // Escala a imagem de acordo com a tela
+            // Redimensiona imagem para caber na tela
             Image imagem = imagemOriginal.getImage().getScaledInstance(getWidth(), getHeight(), Image.SCALE_SMOOTH);
             JLabel fundo = new JLabel(new ImageIcon(imagem));
             fundo.setBounds(0, 0, getWidth(), getHeight());
 
-            // Adiciona a imagem atrás dos componentes
+            // Adiciona imagem como fundo da tela
             getContentPane().add(fundo);
             getContentPane().setComponentZOrder(fundo, getContentPane().getComponentCount() - 1);
         } else {
+            // Mensagem de erro caso imagem não seja encontrada
             System.out.println("Imagem de fundo não encontrada.");
         }
-
     }
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -193,11 +190,12 @@ public class TelaAdicionar extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfAddTempoEstActionPerformed
 
     private void jbtAdicionarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAdicionarPedidoActionPerformed
+        // Captura e limpa os dados dos campos de texto
         String cliente = jtfAddNomeCliente.getText().trim();
         String descricao = jtfAddDescricao.getText().trim();
         String modeloCarro = jtfAddModeloVei.getText().trim();
         String placa = jtfAddPlaca.getText().trim();
-        String textoValor = jtfAddValor.getText().replace("R$", "").replace(",", ".").trim();
+        String textoValor = jtfAddValor.getText().replace("R$", "").replace(",", ".").trim(); // Remove símbolo e formata decimal
         String tempoEstimado = jtfAddTempoEst.getText().trim(); // Ex: "10 Horas", "3 Dias"
 
         double valor;
@@ -233,7 +231,7 @@ public class TelaAdicionar extends javax.swing.JFrame {
             return;
         }
 
-        // Conversão segura apenas do valor
+        // Conversão segura do valor para tipo double
         try {
             valor = Double.parseDouble(textoValor);
         } catch (NumberFormatException e) {
@@ -241,28 +239,34 @@ public class TelaAdicionar extends javax.swing.JFrame {
             return;
         }
 
-        // Criação do objeto Cons_Servico
+        // Criação do objeto com os dados preenchidos
         Cons_Servico pedido = new Cons_Servico(cliente, descricao, modeloCarro, tempoEstimado, placa, valor);
 
-        // Envio para o banco
+        // Envio dos dados para o banco de dados
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/db_autopaint", "root", "")) {
             String sql = "INSERT INTO servicos (nome_cliente, descricao, modelo_carro, placa, valor, tempo_estimado) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
+
+            // Preenche os parâmetros da query com os dados do objeto
             stmt.setString(1, pedido.getCliente());
             stmt.setString(2, pedido.getDescricao());
             stmt.setString(3, pedido.getModeloCarro());
             stmt.setString(4, pedido.getPlaca());
             stmt.setDouble(5, pedido.getValor());
-            stmt.setString(6, pedido.getTempoEstimado()); // já formatado
+            stmt.setString(6, pedido.getTempoEstimado());
 
-            stmt.executeUpdate();
+            stmt.executeUpdate(); // Executa inserção no banco
 
-            telaLista.carregarPedidos();
-            this.dispose();
+            // Atualiza a tela principal e fecha esta janela
+            telaLista.carregarPedidos(); // Recarrega lista de pedidos
+            this.dispose(); // Fecha a tela de adicionar
+
+            // Exibe mensagem de sucesso
             TelaAddSucesso sucesso = new TelaAddSucesso("Pedido adicionado com sucesso!");
             sucesso.setVisible(true);
 
         } catch (SQLException e) {
+            // Exibe mensagem de erro caso falhe a conexão ou inserção
             new TelaErroAdd("Erro ao adicionar pedido: " + e.getMessage()).setVisible(true);
         }
     }//GEN-LAST:event_jbtAdicionarPedidoActionPerformed
@@ -271,40 +275,13 @@ public class TelaAdicionar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfAddNomeClienteActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-    /* Set the Nimbus look and feel */
-    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-     */
-    try {
-        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-            if ("Nimbus".equals(info.getName())) {
-                javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                break;
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new TelaAdicionar().setVisible(true);
             }
-        }
-    } catch (ClassNotFoundException ex) {
-        java.util.logging.Logger.getLogger(TelaAdicionar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (InstantiationException ex) {
-        java.util.logging.Logger.getLogger(TelaAdicionar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (IllegalAccessException ex) {
-        java.util.logging.Logger.getLogger(TelaAdicionar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-        java.util.logging.Logger.getLogger(TelaAdicionar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        });
     }
-    //</editor-fold>
-
-    /* Create and display the form */
-    java.awt.EventQueue.invokeLater(new Runnable() {
-        public void run() {
-            new TelaAdicionar().setVisible(true);
-        }
-    });
-}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbtAdicionarPedido;

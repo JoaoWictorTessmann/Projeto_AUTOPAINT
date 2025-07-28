@@ -1,5 +1,5 @@
 package DAO;
-
+// Construtor da Classe Usuario
 public class Cons_usuario {
 
     private String nome, cpf, telefone, email, tip_usuario;

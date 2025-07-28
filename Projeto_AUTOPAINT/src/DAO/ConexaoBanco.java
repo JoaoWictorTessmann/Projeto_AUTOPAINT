@@ -2,9 +2,8 @@ package DAO;
 
 import javax.swing.JOptionPane;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.sql.Connection;
-
+// Aqui é onde cria a "getConexao" para utilizar no restante do codigo para conectar com o banco
 public class ConexaoBanco {
     public Connection getConexao(){
         try{

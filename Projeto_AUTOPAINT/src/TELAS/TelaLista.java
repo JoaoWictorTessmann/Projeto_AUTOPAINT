@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package TELAS;
 
+// Importações necessárias para componentes visuais e banco de dados
 import DAO.ImagemTelas;
 import java.awt.Color;
 import java.awt.Component;
@@ -26,73 +23,73 @@ import javax.swing.table.TableColumnModel;
 
 public class TelaLista extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaLista
-     */
     public TelaLista() {
-        initComponents();
-        // Garantir tamanho antes de escalar
-        setSize(1500, 850); // ou setExtendedState(MAXIMIZED_BOTH);
-        setLocationRelativeTo(null);//Centralizar na tela
-        setLayout(null); // necessário para posicionamento manual
-        setResizable(false);
+        initComponents(); // Inicializa os componentes visuais da tela
 
-        jbtAdicionar.setContentAreaFilled(true); // tira o fundo branco
-        jbtAdicionar.setBorderPainted(false);     // tira a borda
-        jbtAdicionar.setForeground(java.awt.Color.WHITE);
-        jbtAdicionar.setOpaque(false);            // permite transparência
-        jbtAdicionar.setFont(new Font("SansSerif", Font.BOLD, 40)); // ou outro tamanho
-        jbtAdicionar.setBackground(new Color(20, 40, 60)); // cor branca ou como a cor do fundo
+        // Configurações da janela principal
+        setSize(1500, 850); // Define tamanho fixo da tela
+        setLocationRelativeTo(null); // Centraliza a janela na tela
+        setLayout(null); // Permite posicionamento manual dos componentes
+        setResizable(false); // Impede redimensionamento da janela
 
-        jbtModificar.setContentAreaFilled(true); // tira o fundo branco
-        jbtModificar.setBorderPainted(false);     // tira a borda
-        jbtModificar.setForeground(java.awt.Color.WHITE);
-        jbtModificar.setOpaque(false);            // permite transparência
-        jbtModificar.setFont(new Font("SansSerif", Font.BOLD, 40)); // ou outro tamanho
-        jbtModificar.setBackground(new Color(20, 40, 60)); // cor branca ou como a cor do fundo
+        // Estilização do botão "Adicionar"
+        jbtAdicionar.setContentAreaFilled(true); // Ativa fundo do botão
+        jbtAdicionar.setBorderPainted(false); // Remove borda padrão
+        jbtAdicionar.setForeground(Color.WHITE); // Define cor do texto
+        jbtAdicionar.setOpaque(false); // Permite transparência
+        jbtAdicionar.setFont(new Font("SansSerif", Font.BOLD, 40)); // Define fonte e tamanho
+        jbtAdicionar.setBackground(new Color(20, 40, 60)); // Define cor de fundo (azul escuro)
 
-        jbtCancelar.setContentAreaFilled(true); // tira o fundo branco
-        jbtCancelar.setBorderPainted(false);     // tira a borda
-        jbtCancelar.setForeground(java.awt.Color.WHITE);
-        jbtCancelar.setOpaque(false);            // permite transparência
-        jbtCancelar.setFont(new Font("SansSerif", Font.BOLD, 40)); // ou outro tamanho
-        jbtCancelar.setBackground(new Color(20, 40, 60)); // cor branca ou como a cor do fundo
+        // Estilização do botão "Modificar"
+        jbtModificar.setContentAreaFilled(true);
+        jbtModificar.setBorderPainted(false);
+        jbtModificar.setForeground(Color.WHITE);
+        jbtModificar.setOpaque(false);
+        jbtModificar.setFont(new Font("SansSerif", Font.BOLD, 40));
+        jbtModificar.setBackground(new Color(20, 40, 60));
 
-        jbtFinalizar.setContentAreaFilled(true); // tira o fundo branco
-        jbtFinalizar.setBorderPainted(false);     // tira a borda
-        jbtFinalizar.setForeground(java.awt.Color.WHITE);
-        jbtFinalizar.setOpaque(false);            // permite transparência
-        jbtFinalizar.setFont(new Font("SansSerif", Font.BOLD, 40)); // ou outro tamanho
-        jbtFinalizar.setBackground(new Color(20, 40, 60)); // cor branca ou como a cor do fundo
+        // Estilização do botão "Cancelar"
+        jbtCancelar.setContentAreaFilled(true);
+        jbtCancelar.setBorderPainted(false);
+        jbtCancelar.setForeground(Color.WHITE);
+        jbtCancelar.setOpaque(false);
+        jbtCancelar.setFont(new Font("SansSerif", Font.BOLD, 40));
+        jbtCancelar.setBackground(new Color(20, 40, 60));
 
-        jbtSair.setContentAreaFilled(true); // tira o fundo branco
-        jbtSair.setBorderPainted(false);     // tira a borda
-        jbtSair.setForeground(java.awt.Color.WHITE);
-        jbtSair.setOpaque(false);            // permite transparência
-        jbtSair.setFont(new Font("SansSerif", Font.BOLD, 40)); // ou outro tamanho
-        jbtSair.setBackground(new Color(20, 40, 60)); // cor branca ou como a cor do fundo
+        // Estilização do botão "Finalizar"
+        jbtFinalizar.setContentAreaFilled(true);
+        jbtFinalizar.setBorderPainted(false);
+        jbtFinalizar.setForeground(Color.WHITE);
+        jbtFinalizar.setOpaque(false);
+        jbtFinalizar.setFont(new Font("SansSerif", Font.BOLD, 40));
+        jbtFinalizar.setBackground(new Color(20, 40, 60));
 
+        // Estilização do botão "Sair"
+        jbtSair.setContentAreaFilled(true);
+        jbtSair.setBorderPainted(false);
+        jbtSair.setForeground(Color.WHITE);
+        jbtSair.setOpaque(false);
+        jbtSair.setFont(new Font("SansSerif", Font.BOLD, 40));
+        jbtSair.setBackground(new Color(20, 40, 60));
+
+        // Carregamento da imagem de fundo da tela
         ImageIcon imagemOriginal = DAO.ImagemTelas.getImagem("telalista");
 
         if (imagemOriginal != null) {
-            // Escala a imagem de acordo com a tela
+            // Redimensiona imagem para caber na tela
             Image imagem = imagemOriginal.getImage().getScaledInstance(getWidth(), getHeight(), Image.SCALE_SMOOTH);
             JLabel fundo = new JLabel(new ImageIcon(imagem));
             fundo.setBounds(0, 0, getWidth(), getHeight());
 
-            // Adiciona a imagem atrás dos componentes
+            // Adiciona imagem como fundo da tela
             getContentPane().add(fundo);
             getContentPane().setComponentZOrder(fundo, getContentPane().getComponentCount() - 1);
         } else {
+            // Mensagem de erro caso imagem não seja encontrada
             System.out.println("Imagem de fundo não encontrada.");
         }
     }
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -218,61 +215,40 @@ public class TelaLista extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Ação do botão "Sair"
     private void jbtSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSairActionPerformed
-        TelaLogin login = new TelaLogin();
-        login.setVisible(true);
-        login.setLocationRelativeTo(null); // centraliza
-        this.dispose(); // fecha a tela atual
+        TelaLogin login = new TelaLogin(); // Cria nova instância da tela de login
+        login.setVisible(true); // Exibe a tela de login
+        login.setLocationRelativeTo(null); // Centraliza a tela de login
+        this.dispose(); // Fecha a tela atual (TelaLista)
     }//GEN-LAST:event_jbtSairActionPerformed
 
+    // Ação do botão "Finalizar"
     private void jbtFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtFinalizarActionPerformed
-        TelaFinalizar FinalizarPedido = new TelaFinalizar(this);
-        FinalizarPedido.setVisible(true);
+        TelaFinalizar FinalizarPedido = new TelaFinalizar(this); // Cria tela de finalização, passando referência da tela atual
+        FinalizarPedido.setVisible(true); // Exibe a tela de finalização
     }//GEN-LAST:event_jbtFinalizarActionPerformed
 
+    // Ação do botão "Cancelar"
     private void jbtCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtCancelarActionPerformed
-        TelaCancelar cancelarPedido = new TelaCancelar(this);
-        cancelarPedido.setVisible(true);
+        TelaCancelar cancelarPedido = new TelaCancelar(this); // Cria tela de cancelamento, passando referência da tela atual
+        cancelarPedido.setVisible(true); // Exibe a tela de cancelamento
     }//GEN-LAST:event_jbtCancelarActionPerformed
 
+    // Ação do botão "Modificar"
     private void jbtModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtModificarActionPerformed
-        TelaModificar modificarPedido = new TelaModificar(this);
-        modificarPedido.setVisible(true);
+        TelaModificar modificarPedido = new TelaModificar(this); // Cria tela de modificação, passando referência da tela atual
+        modificarPedido.setVisible(true); // Exibe a tela de modificação
     }//GEN-LAST:event_jbtModificarActionPerformed
 
+    // Ação do botão "Adicionar"
     private void jbtAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAdicionarActionPerformed
-        TelaAdicionar adicionar = new TelaAdicionar(this);
-        adicionar.setVisible(true);
+        TelaAdicionar adicionar = new TelaAdicionar(this); // Cria tela de adição de pedido, passando referência da tela atual
+        adicionar.setVisible(true); // Exibe a tela de adição
     }//GEN-LAST:event_jbtAdicionarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaLista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaLista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaLista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaLista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaLista().setVisible(false);
@@ -281,25 +257,28 @@ public class TelaLista extends javax.swing.JFrame {
     }
 
     public void carregarPedidos() {
+        // Cria modelo de tabela com células não editáveis
         DefaultTableModel model = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false;
+                return false; // Impede edição direta na tabela
             }
         };
 
+        // Define os nomes das colunas da tabela
         model.setColumnIdentifiers(new Object[]{
             "ID", "Cliente", "Descrição", "Modelo", "Placa", "Valor", "Tempo", "Status"
         });
 
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_autopaint", "root", "")) {
-            String sql = "SELECT * FROM servicos";
+            String sql = "SELECT * FROM servicos"; // Consulta todos os registros da tabela
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
 
-            // Formato de moeda brasileira
+            // Formata valores como moeda brasileira (R$)
             NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
 
+            // Itera sobre os resultados e adiciona à tabela
             while (rs.next()) {
                 double valor = rs.getDouble("valor");
                 String valorFormatado = formatoMoeda.format(valor); // Ex: R$ 100,00
@@ -310,7 +289,7 @@ public class TelaLista extends javax.swing.JFrame {
                     rs.getString("descricao"),
                     rs.getString("modelo_carro"),
                     rs.getString("placa"),
-                    valorFormatado, // 👈 valor formatado como moeda
+                    valorFormatado,
                     rs.getString("tempo_estimado"),
                     rs.getString("status_servico")
                 });
@@ -319,34 +298,38 @@ public class TelaLista extends javax.swing.JFrame {
             rs.close();
             stmt.close();
         } catch (SQLException e) {
+            // Exibe mensagem de erro em caso de falha na consulta
             JOptionPane.showMessageDialog(null, "Erro ao carregar pedidos: " + e.getMessage());
         }
-        // Fundo e fonte
-        JtlLista.setBackground(Color.WHITE); // fundo escuro
-        JtlLista.setForeground(Color.BLACK);           // texto branco
-        JtlLista.setFont(new Font("SansSerif", Font.PLAIN, 16));
 
-// Cabeçalho
-        JtlLista.getTableHeader().setBackground(new Color(30, 30, 40));
-        JtlLista.getTableHeader().setForeground(Color.BLACK);
-        JtlLista.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 16));
+        // Estilização da tabela
+        JtlLista.setBackground(Color.WHITE); // Fundo da tabela
+        JtlLista.setForeground(Color.BLACK); // Cor do texto
+        JtlLista.setFont(new Font("SansSerif", Font.PLAIN, 16)); // Fonte padrão
+
+        // Estilização do cabeçalho da tabela
+        JtlLista.getTableHeader().setBackground(new Color(30, 30, 40)); // Fundo do cabeçalho
+        JtlLista.getTableHeader().setForeground(Color.BLACK); // Texto do cabeçalho
+        JtlLista.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 16)); // Fonte do cabeçalho
         JtlLista.getTableHeader().setOpaque(true);
 
-// Alternância de cor nas linhas (zebra)
+        // Alternância de cor nas linhas (efeito zebra)
         JtlLista.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value,
                     boolean isSelected, boolean hasFocus, int row, int column) {
 
                 Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-                c.setBackground((row % 2 == 0) ? new Color(41, 45, 62) : new Color(50, 55, 75));
-                c.setForeground(Color.WHITE);
+                c.setBackground((row % 2 == 0) ? new Color(41, 45, 62) : new Color(50, 55, 75)); // Alterna cores por linha
+                c.setForeground(Color.WHITE); // Texto branco
                 return c;
             }
         });
 
-        // Aplica o modelo à tabela e impede modificações visuais
+        // Aplica o modelo à tabela
         JtlLista.setModel(model);
+
+        // Define largura preferencial das colunas
         TableColumnModel colunaModel = JtlLista.getColumnModel();
         colunaModel.getColumn(0).setPreferredWidth(15);   // ID
         colunaModel.getColumn(1).setPreferredWidth(120);  // Cliente
@@ -356,8 +339,10 @@ public class TelaLista extends javax.swing.JFrame {
         colunaModel.getColumn(5).setPreferredWidth(80);   // Valor
         colunaModel.getColumn(6).setPreferredWidth(90);   // Tempo
         colunaModel.getColumn(7).setPreferredWidth(120);  // Status
-        JtlLista.getTableHeader().setReorderingAllowed(false);   // impede mover colunas
-        JtlLista.getTableHeader().setResizingAllowed(false);     // impede redimensionar colunas
+
+        // Impede que o usuário mova ou redimensione colunas
+        JtlLista.getTableHeader().setReorderingAllowed(false);
+        JtlLista.getTableHeader().setResizingAllowed(false);
     }
 
 
